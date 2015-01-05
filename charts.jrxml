@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2014-12-30T15:11:11 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="charts" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="dd9999e0-8b92-4dfb-abc8-ca12070b2bb6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Demo Data on Local Postgres"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/MedicalCharts_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/MedicalCharts"/>
+	<subDataset name="Marital Status Totals" uuid="a9501a23-5d47-455f-8344-15b4e3d11ac9">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Demo Data on Local Postgres"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT 
+  "Medical_Data".marital_status, count("Medical_Data".marital_status) AS "marital_status_totals"
+FROM 
+  public."Medical_Data"
+GROUP BY 
+  "Medical_Data".marital_status]]>
+		</queryString>
+		<field name="marital_status" class="java.lang.String"/>
+		<field name="marital_status_totals" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="Blood Type Totals" uuid="35e7904e-9e01-4ecd-89ba-a96db76223d1">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Demo Data on Local Postgres"/>
+		<queryString>
+			<![CDATA[SELECT 
+  "Medical_Data".blood_type, count("Medical_Data".blood_type) AS "Total Blood Type"
+FROM 
+  public."Medical_Data"
+GROUP BY 
+  "Medical_Data".blood_type]]>
+		</queryString>
+		<field name="blood_type" class="java.lang.String"/>
+		<field name="Total Blood Type" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="Top 5 Drugs Used" uuid="57fce1cd-e00a-4328-9a91-bd19be7f7343">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Demo Data on Local Postgres"/>
+		<queryString>
+			<![CDATA[SELECT "Medical_Data".drugs, count("Medical_Data".drugs) AS "drugs_count" 
+FROM public."Medical_Data" 
+GROUP BY 
+"Medical_Data".drugs
+ORDER BY drugs_count DESC
+LIMIT 5]]>
+		</queryString>
+		<field name="drugs" class="java.lang.String"/>
+		<field name="drugs_count" class="java.lang.Long"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select 1 as dummy_field]]>
+	</queryString>
+	<field name="dummy_field" class="java.lang.Integer"/>
+	<summary>
+		<band height="170" splitType="Stretch">
+			<frame>
+				<reportElement x="-20" y="0" width="595" height="170" uuid="1b44dc0c-5c6d-44dc-aa13-07cea42af432"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<componentElement>
+					<reportElement x="200" y="0" width="200" height="170" uuid="669ce12e-288f-4859-b209-5a46d62ffe58"/>
+					<hc:chart xmlns:hc="http://jaspersoft.com/highcharts" xsi:schemaLocation="http://jaspersoft.com/highcharts http://jaspersoft.com/schema/highcharts.xsd" type="Pie">
+						<hc:chartSetting name="default">
+							<hc:chartProperty name="_showDataPoints">
+								<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="_showMeasureNameOnValueAxis">
+								<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="chart.zoomType">
+								<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.enabled">
+								<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.href">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="legend.enabled">
+								<hc:propertyExpression><![CDATA[Boolean.TRUE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.pie.showInLegend" value="true"/>
+							<hc:chartProperty name="plotOptions.series.dataLabels.enabled">
+								<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.series.showInLegend">
+								<hc:propertyExpression><![CDATA[Boolean.TRUE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.series.visible">
+								<hc:propertyExpression><![CDATA[Boolean.TRUE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="title.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.pie.marker.enabled">
+								<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="yAxis.title.text" value=""/>
+						</hc:chartSetting>
+						<multiAxisData>
+							<multiAxisDataset>
+								<dataset>
+									<datasetRun subDataset="Marital Status Totals" uuid="259d57dc-6676-4d66-a810-bd1ad7c164e4"/>
+								</dataset>
+							</multiAxisDataset>
+							<dataAxis axis="Rows">
+								<axisLevel name="Level1">
+									<labelExpression><![CDATA["Level Label expression"]]></labelExpression>
+									<axisLevelBucket class="java.lang.String">
+										<bucketExpression><![CDATA[$F{marital_status}]]></bucketExpression>
+									</axisLevelBucket>
+								</axisLevel>
+							</dataAxis>
+							<multiAxisMeasure name="Measure1" class="java.lang.Long" calculation="Nothing">
+								<labelExpression><![CDATA[""]]></labelExpression>
+								<valueExpression><![CDATA[$F{marital_status_totals}]]></valueExpression>
+							</multiAxisMeasure>
+						</multiAxisData>
+						<hc:series name="Measure1"/>
+					</hc:chart>
+				</componentElement>
+				<componentElement>
+					<reportElement mode="Opaque" x="19" y="0" width="181" height="170" uuid="09053935-4c55-4c69-863a-da6befb7ced7"/>
+					<hc:chart xmlns:hc="http://jaspersoft.com/highcharts" xsi:schemaLocation="http://jaspersoft.com/highcharts http://jaspersoft.com/schema/highcharts.xsd" type="Pie">
+						<hc:chartSetting name="default">
+							<hc:chartProperty name="chart.plotBorderColor">
+								<hc:propertyExpression><![CDATA[new java.awt.Color(-16777216)]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="chart.plotBorderWidth">
+								<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="chart.zoomType">
+								<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.enabled">
+								<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.href">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="legend.enabled">
+								<hc:propertyExpression><![CDATA[Boolean.TRUE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.pie.showInLegend" value="true"/>
+							<hc:chartProperty name="plotOptions.series.dataLabels.enabled">
+								<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.series.showInLegend">
+								<hc:propertyExpression><![CDATA[Boolean.TRUE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="title.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="yAxis.title.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+						</hc:chartSetting>
+						<multiAxisData>
+							<multiAxisDataset>
+								<dataset>
+									<datasetRun subDataset="Blood Type Totals" uuid="ba4f0607-daed-4f31-be17-0e69dfa802b4"/>
+								</dataset>
+							</multiAxisDataset>
+							<dataAxis axis="Rows">
+								<axisLevel name="Level1">
+									<labelExpression><![CDATA["Level Label expression"]]></labelExpression>
+									<axisLevelBucket class="java.lang.String">
+										<bucketExpression><![CDATA[$F{blood_type}]]></bucketExpression>
+									</axisLevelBucket>
+								</axisLevel>
+							</dataAxis>
+							<multiAxisMeasure name="Measure1" class="java.lang.Integer" calculation="Nothing">
+								<labelExpression><![CDATA[""]]></labelExpression>
+								<valueExpression><![CDATA[$F{Total Blood Type}]]></valueExpression>
+							</multiAxisMeasure>
+						</multiAxisData>
+						<hc:series name="Measure1"/>
+					</hc:chart>
+				</componentElement>
+				<componentElement>
+					<reportElement x="400" y="0" width="175" height="170" uuid="dce091ff-79ad-44f9-9cd5-b975ccd3d9a1"/>
+					<hc:chart xmlns:hc="http://jaspersoft.com/highcharts" xsi:schemaLocation="http://jaspersoft.com/highcharts http://jaspersoft.com/schema/highcharts.xsd" type="Bar">
+						<hc:chartSetting name="default">
+							<hc:chartProperty name="chart.zoomType">
+								<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.enabled">
+								<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.href">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="credits.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="title.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="yAxis.title.text">
+								<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="plotOptions.series.showInLegend">
+								<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+							</hc:chartProperty>
+							<hc:chartProperty name="legend.enabled">
+								<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+							</hc:chartProperty>
+						</hc:chartSetting>
+						<multiAxisData>
+							<multiAxisDataset>
+								<dataset>
+									<datasetRun subDataset="Top 5 Drugs Used" uuid="b64d3f44-d2f0-42c9-aabc-80dcaae19915"/>
+								</dataset>
+							</multiAxisDataset>
+							<dataAxis axis="Rows">
+								<axisLevel name="Level1">
+									<labelExpression><![CDATA["Level Label expression"]]></labelExpression>
+									<axisLevelBucket class="java.lang.String">
+										<bucketExpression><![CDATA[$F{drugs}]]></bucketExpression>
+									</axisLevelBucket>
+								</axisLevel>
+							</dataAxis>
+							<dataAxis axis="Columns"/>
+							<multiAxisMeasure name="Measure1" class="java.lang.Long" calculation="Nothing">
+								<labelExpression><![CDATA[""]]></labelExpression>
+								<valueExpression><![CDATA[$F{drugs_count}]]></valueExpression>
+							</multiAxisMeasure>
+						</multiAxisData>
+						<hc:series name="Measure1"/>
+					</hc:chart>
+				</componentElement>
+			</frame>
+		</band>
+	</summary>
+</jasperReport>
