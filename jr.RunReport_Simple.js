@@ -90,21 +90,37 @@ define(['jquery'], function($) {
             }
 
             $("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
-            
+
+
+
+            // create a deferred
+            var vizInstanceReady = new $.Deferred();
+
             visualize({
                 auth: {
-                    name: "jasperadmin",
-                    password: "jasperadmin",
-                    organization: "organization_1"
+                    // if we are at this point we are already authenticated, so hook Viz.js auth to do nothing
+                    loginFn: function (properties, request) {
+                        // jQuery here is just for sample, any resolved Promise will work
+                        return (new $.Deferred()).resolve();
+                    }
                 }
-            }, function (v) {
+            }, function(v) {
+                // resolve our deferred with viz instance
+                vizInstanceReady.resolve(v);
+            });
 
+            // now in done callback of our deferred we can use our pre-configured viz instance
+            vizInstanceReady.done(function(v) {
+                console.log(v);
                 var report = v.report({
                     resource: r_resource,
                     container: "#report",
                     params:data
                 });
             });
+
+            // you can assign as many done callbacks as you want, callback function will be executed ONLY AFTER deferred is resolved
+            //vizInstanceReady.done(function(v) {  });
         }
     };
 
