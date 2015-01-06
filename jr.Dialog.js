@@ -52,7 +52,8 @@ define(['jquery','jr.GenericInternalViz'], function($,GenericVizAction) {
 		// }
 
 
-		$("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
+		//$("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
+		var d_content = ((hyperlink.params.content)  ?  hyperlink.params.content : "");
 		$("#report").html(d_content);
 	};
 

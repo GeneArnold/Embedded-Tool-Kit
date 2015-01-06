@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2015-01-05T14:53:42 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Main_Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68ae0a93-aab5-44f4-89a4-bf3f53f86982">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/MainReport_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/MainReport"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM store]]>
+	</queryString>
+	<field name="store_id" class="java.lang.Integer"/>
+	<field name="store_type" class="java.lang.String"/>
+	<field name="region_id" class="java.lang.Integer"/>
+	<field name="store_name" class="java.lang.String"/>
+	<field name="store_number" class="java.lang.Integer"/>
+	<field name="store_street_address" class="java.lang.String"/>
+	<field name="store_city" class="java.lang.String"/>
+	<field name="store_state" class="java.lang.String"/>
+	<field name="store_postal_code" class="java.lang.String"/>
+	<field name="store_country" class="java.lang.String"/>
+	<field name="store_manager" class="java.lang.String"/>
+	<field name="store_phone" class="java.lang.String"/>
+	<field name="store_fax" class="java.lang.String"/>
+	<field name="first_opened_date" class="java.sql.Timestamp"/>
+	<field name="last_remodel_date" class="java.sql.Timestamp"/>
+	<field name="store_sqft" class="java.lang.Integer"/>
+	<field name="grocery_sqft" class="java.lang.Integer"/>
+	<field name="frozen_sqft" class="java.lang.Integer"/>
+	<field name="meat_sqft" class="java.lang.Integer"/>
+	<field name="coffee_bar" class="java.lang.Boolean"/>
+	<field name="video_store" class="java.lang.Boolean"/>
+	<field name="salad_bar" class="java.lang.Boolean"/>
+	<field name="prepared_food" class="java.lang.Boolean"/>
+	<field name="florist" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<textField hyperlinkType="RunReport">
+				<reportElement mode="Opaque" x="30" y="0" width="100" height="30" backcolor="#40A7D6" uuid="9dc69553-d767-4ff6-9407-03692208fd9f"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Toggle Chart 1"]]></textFieldExpression>
+				<hyperlinkParameter name="resource">
+					<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/Chart1"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="container">
+					<hyperlinkParameterExpression><![CDATA["#chart1"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="dialog">
+					<hyperlinkParameterExpression><![CDATA[false]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+			</textField>
+			<textField isBlankWhenNull="false" hyperlinkType="RunReport">
+				<reportElement mode="Opaque" x="230" y="0" width="100" height="30" forecolor="#000000" backcolor="#40A7D6" uuid="dd25ac52-93e2-4e89-af9f-33d2e2515c27"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Toggle Chart 2"]]></textFieldExpression>
+				<hyperlinkParameter name="resource">
+					<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/Chart2"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="container">
+					<hyperlinkParameterExpression><![CDATA["#chart1"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="dialog">
+					<hyperlinkParameterExpression><![CDATA[false]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement mode="Opaque" x="430" y="0" width="100" height="30" forecolor="#000000" backcolor="#40A7D6" uuid="03724c18-0ef4-472c-a32f-4c015a65fe98"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Toggle Chart 3"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="207" splitType="Stretch">
+			<componentElement>
+				<reportElement mode="Opaque" x="-1" y="7" width="555" height="200" backcolor="#696969" uuid="78b21340-5f92-4f07-9604-9097472da546">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<hc:html xmlns:hc="http://jasperreports.sourceforge.net/htmlcomponent" xsi:schemaLocation="http://jasperreports.sourceforge.net/htmlcomponent http://jasperreports.sourceforge.net/xsd/htmlcomponent.xsd" scaleType="RetainShape" horizontalAlign="Left" verticalAlign="Middle">
+					<hc:htmlContentExpression><![CDATA["<div id='chart1'></div>"]]></hc:htmlContentExpression>
+				</hc:html>
+			</componentElement>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="74cc1390-44d8-4318-99ac-eadffc6616de"/>
+				<text><![CDATA[store_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="30" uuid="955953ae-f86b-4b72-a27f-7d2fdeec70e4"/>
+				<text><![CDATA[store_number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="e620b4a6-37f2-4d21-8fd7-48ac018d4d29"/>
+				<text><![CDATA[store_country]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="30" uuid="7b8d2822-4031-461c-b282-b6c48295ae43"/>
+				<text><![CDATA[store_type]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField hyperlinkType="Dialog">
+				<reportElement x="0" y="0" width="100" height="30" uuid="d92e0dfc-04f2-4434-a29f-946fb7752680"/>
+				<textFieldExpression><![CDATA[$F{store_name}]]></textFieldExpression>
+				<hyperlinkParameter name="title">
+					<hyperlinkParameterExpression><![CDATA["Details for store: "  + $F{store_name}]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="height">
+					<hyperlinkParameterExpression><![CDATA[200]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="width">
+					<hyperlinkParameterExpression><![CDATA[200]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="content">
+					<hyperlinkParameterExpression><![CDATA["<div>Salad Bar: " + $F{salad_bar} + "</div>" +
+"<div>Video Store: " + $F{video_store} + "</div>"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="71f03c61-0343-402f-8bf5-34326455ac70"/>
+				<textFieldExpression><![CDATA[$F{store_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="30" uuid="5fc0d545-6084-4fcc-8130-84a00935fbf5"/>
+				<textFieldExpression><![CDATA[$F{store_country}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="30" uuid="89160b03-24a4-4ddb-8e66-b057ebfacb9a"/>
+				<textFieldExpression><![CDATA[$F{store_type}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

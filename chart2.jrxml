@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2015-01-05T14:39:55 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chart2" pageWidth="555" pageHeight="200" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f8de8949-6b13-4704-80fc-f461042de52d">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/Chart2_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/Chart2"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+  agg_c_10_sales_fact_1997.month_of_year, 
+  agg_c_10_sales_fact_1997.store_sales
+FROM 
+  public.agg_c_10_sales_fact_1997;]]>
+	</queryString>
+	<field name="month_of_year" class="java.lang.Integer"/>
+	<field name="store_sales" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="200" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="200" uuid="7733a82b-094e-49f5-af6c-2f9de5ed1a17">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<hc:chart xmlns:hc="http://jaspersoft.com/highcharts" xsi:schemaLocation="http://jaspersoft.com/highcharts http://jaspersoft.com/schema/highcharts.xsd" type="Column">
+					<hc:chartSetting name="default">
+						<hc:chartProperty name="_showDataPoints">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="_showMeasureNameOnValueAxis">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.zoomType">
+							<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="credits.enabled">
+							<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="credits.href">
+							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="credits.text">
+							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="legend.enabled">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="plotOptions.pie.marker.enabled">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="plotOptions.pie.showInLegend" value="false"/>
+						<hc:chartProperty name="plotOptions.series.shadow">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="plotOptions.series.showInLegend">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="title.text">
+							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="plotOptions.column.marker.enabled">
+							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="yAxis.title.text" value=""/>
+					</hc:chartSetting>
+					<multiAxisData>
+						<multiAxisDataset/>
+						<dataAxis axis="Rows">
+							<axisLevel name="Level1">
+								<labelExpression><![CDATA["Level Label expression"]]></labelExpression>
+								<axisLevelBucket class="java.lang.String">
+									<bucketExpression><![CDATA[$F{month_of_year}]]></bucketExpression>
+								</axisLevelBucket>
+							</axisLevel>
+						</dataAxis>
+						<multiAxisMeasure name="Measure1" class="java.lang.Integer" calculation="Nothing">
+							<labelExpression><![CDATA["Month"]]></labelExpression>
+							<valueExpression><![CDATA[$F{store_sales}]]></valueExpression>
+						</multiAxisMeasure>
+					</multiAxisData>
+					<hc:series name="Measure1"/>
+				</hc:chart>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

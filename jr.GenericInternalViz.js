@@ -60,15 +60,18 @@ define(['jquery','visualizeHelper'], function($,visualizeHelper) {
             var d_height = ((hyperlink.params.height)  ?  hyperlink.params.height : "auto");
             var d_title = ((hyperlink.params.title)  ?  hyperlink.params.title : "Dialog");
             var d_content = ((hyperlink.params.content)  ?  hyperlink.params.content : "");
+            //Adding this in to toggle dialog on or off till new mode functionality is built
+            var d_dialog = ((hyperlink.params.dialog)  ?  hyperlink.params.dialog : true);
                         
-            if ( $( "#dialog" ).length == 0 ) {
-                var new_dialog = $('<div id="dialog"><div id="report"></div></div>');
-                new_dialog.insertAfter('#reportContainer');
-            }
+            if (d_dialog == true){
+                if ( $( "#dialog" ).length == 0 ) {
+                    var new_dialog = $('<div id="dialog"><div id="report"></div></div>');
+                    new_dialog.insertAfter('#reportContainer');
+                }
 
-            $("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
-            
-            
+                $("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
+
+            }
         },
 		/* In our idea Visualize should be already 
 		* loaded and always available from any javascript.
