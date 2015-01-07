@@ -25,7 +25,7 @@
  * 
  */
 
-define(['jquery','jr.GenericInternalViz'], function($,GenericVizAction) {
+define(['jquery','vizjs_toolkit/GenericHyperlinkHandler'], function($,GenericVizAction) {
 
 	function DialogViz(arrHyperlinks){
 		GenericVizAction.call(this,arrHyperlinks);
@@ -39,21 +39,31 @@ define(['jquery','jr.GenericInternalViz'], function($,GenericVizAction) {
 	// Replace the "_handleHyperlinkClick" method
 	DialogViz.prototype.handleHyperlinkClick = function(hyperlink){
 		GenericVizAction.prototype.handleHyperlinkClick.call(this,hyperlink);
+		
+		var divId = null;
+		
+		var mode = this.getMode();
 
-		//var uri = "http://localhost:8080/jasperserver-pro/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri=%2Fpublic%2FSamples%2FReports&reportUnit=%2Fpublic%2FSamples%2FReports%2F01._Geographic_Results_by_Segment_Report&viewAsDashboardFrame=true"
-		// if ( $( "#dialog" ).length == 0 ) {
-		//     var new_dialog = $('<div id="dialog"><div id="report"></div><br><iframe id="dialog_frame" width="100%" height="90%" src="'+uri+'"></iframe></div>');
-		//     new_dialog.insertAfter('#reportContainer');
-		// }
-
-		// if ( $( "#dialog_frame" ).length == 0 ) {
-		//     var new_dialog_frame = $('<iframe id="dialog_frame" src="http://localhost:8080/jasperserver-pro"></iframe>');
-		//     new_dialog.insertAfter('#report');
-		// }
-
-
-		$("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
-		$("#report").html(d_content);
+		if(mode == "dialog"){
+			divId = GenericVizAction.prototype.openDialog.call(this,hyperlink);
+			
+		}else if(mode == "div"){
+			//no action needed, the div is there already
+			divId = "#" + (hyperlink.params.container || "contentDiv");
+		}		
+		
+		var d_content = null;
+		var d_content_type = hyperlink.params.content_type  ||  "";
+		
+		if (d_content_type=="frame"){
+			//here  we create a frame object using the url in the hyperlink
+			var d_content_frame_url = hyperlink.params.frame_url  ||  "";
+			d_content = '<iframe src="'+d_content_frame_url+'" frameborder="0" scrolling="yes" id="myFrame" width="100%" height="100%"></iframe>';
+		}else{
+			//In this case we just put the content in the div (both for dialog and div mode
+			d_content = hyperlink.params.content  ||  "";
+		}
+		$(divId).html(d_content);
 	};
 
 	return DialogViz;
