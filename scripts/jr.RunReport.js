@@ -62,13 +62,13 @@ define(['jquery','vizjs_toolkit/VizHyperlinkHandler'], function($,GenericVizActi
 	
 	ReportExecution.prototype.runReport = function(hyperlink){
 		//getting the parameters from hyperlink. The params have 
-
+		var paramsList = {};
 		$.each(hyperlink.params,
 			function(index,value){
-				if (index.substring(0, 6) === "p_"){
+				if (index.substring(0, 2) === "p_"){
 					var v = [];
 					v.push(value);
-					this.reportParameters[index.substring(2)] = v;
+					paramsList[index.substring(2)] = v;
 				}
 			}
 		);  
@@ -76,13 +76,12 @@ define(['jquery','vizjs_toolkit/VizHyperlinkHandler'], function($,GenericVizActi
 		//getting the resource uri from hyperlink
 		var r_resource = hyperlink.params.resource || "";
 		var r_container = this.r_container;
-		var params = this.reportParameters;
 		
 		this.getViz().done(function(v) {
 			this.report = v.report({
                 resource: r_resource,
                 container: r_container,
-                params: params
+                params: paramsList
             });
 		});
 	}
