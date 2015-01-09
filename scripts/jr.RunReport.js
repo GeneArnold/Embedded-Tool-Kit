@@ -25,10 +25,12 @@
  * 
  */
 
-define(['jquery','jr.GenericInternalViz'], function($,GenericVizAction) {
+define(['jquery','vizjs_toolkit/VizHyperlinkHandler'], function($,GenericVizAction) {
 
 	function ReportExecution(arrHyperlinks){
 		GenericVizAction.call(this,arrHyperlinks);
+		this.r_container = null;
+		this.reportParameters = {};
 	}
 	
 	ReportExecution.prototype = Object.create(GenericVizAction.prototype); 
@@ -40,33 +42,49 @@ define(['jquery','jr.GenericInternalViz'], function($,GenericVizAction) {
 	ReportExecution.prototype.handleHyperlinkClick = function(hyperlink){
 		//Calling the generic logic in the parent method
 		GenericVizAction.prototype.handleHyperlinkClick.call(this,hyperlink);
+		
+		var mode = this.getMode();
 
-		var r_resource = ((hyperlink.params.resource)  ?  hyperlink.params.resource : "");
-		var r_container = ((hyperlink.params.container)  ?  hyperlink.params.container : "#report");
-		var data = {};
+		if(mode == "dialog"){
+			this.r_container = GenericVizAction.prototype.openDialog.call(this,hyperlink);
+			
+		}else if(mode == "div"){
+			//no action needed, the div is there already
+			this.r_container =  "#" + (hyperlink.params.container || "report");
+		}			
+		
+		this.runReport(hyperlink);
+		
 
-		if(hyperlink.params){
-			$.each(hyperlink.params,
-				function(index,value){
-					if (index.substring(0, 6) === "param_"){
-						var v = [];
-						v.push(value);
-						data[index.substring(6)] = v;
-					}
+
+		
+	};
+	
+	ReportExecution.prototype.runReport = function(hyperlink){
+		//getting the parameters from hyperlink. The params have 
+		var paramsList = {};
+		$.each(hyperlink.params,
+			function(index,value){
+				if (index.substring(0, 2) === "p_"){
+					var v = [];
+					v.push(value);
+					paramsList[index.substring(2)] = v;
 				}
-			); 
-		}
-
-		var report;
-
+			}
+		);  
+		
+		//getting the resource uri from hyperlink
+		var r_resource = hyperlink.params.resource || "";
+		var r_container = this.r_container;
+		
 		this.getViz().done(function(v) {
-			report = v.report({
+			this.report = v.report({
                 resource: r_resource,
                 container: r_container,
-                params:data
+                params: paramsList
             });
 		});
-	};
+	}
 	
 	return ReportExecution;
 

@@ -25,20 +25,21 @@
  * 
  */
 
-define(['jquery','visualizeHelper'], function($,visualizeHelper) {
+define(['jquery'], function($) {
 	
 	
-	var GenericVizAction = function(arrHyperlinks) {
+	var GenericHyperlink = function(arrHyperlinks) {
         this.hyperlinks = arrHyperlinks;
         this.reportInstance = null;
-        this.reportContainer = null;		
+        this.reportContainer = null;
+		this.mode = null;
     };
 	
-    GenericVizAction.prototype = {
+    GenericHyperlink.prototype = {
         register: function() {
             var it = this;
             $(it.hyperlinks[0].selector).on('click', function(evt) {
-                var hlData = it._getHyperlinkData($(this).attr('data-id'));
+                var hlData = it.getHyperlinkData($(this).attr('data-id'));
                 if (hlData) {
                     it.handleHyperlinkClick(hlData);
                 }
@@ -46,7 +47,7 @@ define(['jquery','visualizeHelper'], function($,visualizeHelper) {
         },
         handleInteraction: function(evt) {
             if ('hyperlinkClicked' == evt.type) {
-                var hlData = this._getHyperlinkData(evt.data.hyperlink.id);
+                var hlData = this.getHyperlinkData(evt.data.hyperlink.id);
                 if (hlData) {
                     this.handleHyperlinkClick(hlData);
                 }
@@ -56,38 +57,34 @@ define(['jquery','visualizeHelper'], function($,visualizeHelper) {
 		 * It is the function to override in order to add custom HyperlinkHandling behaviors
 		*/
 		handleHyperlinkClick: function(hyperlink) {
-            var d_width = ((hyperlink.params.width)  ?  hyperlink.params.width : "auto");
-            var d_height = ((hyperlink.params.height)  ?  hyperlink.params.height : "auto");
-            var d_title = ((hyperlink.params.title)  ?  hyperlink.params.title : "Dialog");
-            var d_content = ((hyperlink.params.content)  ?  hyperlink.params.content : "");
-            //Adding this in to toggle dialog on or off till new mode functionality is built
-            var d_dialog = ((hyperlink.params.dialog)  ?  hyperlink.params.dialog : true);
-                        
-            if (d_dialog == true){
-                if ( $( "#dialog" ).length == 0 ) {
-                    var new_dialog = $('<div id="dialog"><div id="report"></div></div>');
-                    new_dialog.insertAfter('#reportContainer');
-                }
-
-                $("#dialog").dialog({ height: d_height, width: d_width, title: d_title });
-
-            }
+			this.mode = hyperlink.params.mode || "dialog";
+                       
         },
-		/* In our idea Visualize should be already 
-		* loaded and always available from any javascript.
-		* This service should return an object already loaded 
-		* in the window object If undefined instantiate a viz object. 
-		* Most probably this logic could be incapsulated in a common 
-		* service javascript obj, to make it available through requireJS 
-		* to all javascript that will need to use visualize in JRS
-		*/
-		getViz: function(){
-			return new visualizeHelper().getVizInstance();
+		//getMode
+		getMode: function(){
+			return this.mode ;
+		},
+		/*This method opens a dialog and return the name of the inner report div*/
+		openDialog : function(hyperlink){
+		
+			var dialogId = hyperlink.params.container || "container";	
+			var d_width = hyperlink.params.width || "auto";
+			var d_height = hyperlink.params.height  || "auto";
+			var d_title = hyperlink.params.title  || "Dialog";
+			var reportDivId = dialogId + "Int";	
+			
+			if ( $( "#"+dialogId ).length == 0 ) {
+				var new_dialog = $('<div id="'+dialogId+'"><div id="'+reportDivId+'" style="width:100%;height:100%;"></div></div>');
+				new_dialog.insertAfter('#reportContainer');
+			}
+
+			$("#"+dialogId).dialog({ height: d_height, width: d_width, title: d_title });
+			return "#"+reportDivId;
 		},
 		
 
-        // internal functions
-        _getHyperlinkData: function(id) {
+        
+        getHyperlinkData: function(id) {
             var hlData = null;
             $.each(this.hyperlinks, function(i, hl) {
                 if (id === hl.id) {
@@ -100,5 +97,5 @@ define(['jquery','visualizeHelper'], function($,visualizeHelper) {
         
     };
 
-    return GenericVizAction;
+    return GenericHyperlink;
 });
