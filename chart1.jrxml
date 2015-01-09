@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
-<!-- 2015-01-07T11:33:39 -->
+<!-- 2015-01-08T22:06:23 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chart1" pageWidth="555" pageHeight="213" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e62cbab2-66b3-42c4-a1bf-48792a06e225">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
 	<property name="ireport.jasperserver.user" value="superuser"/>
-	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/Chart1_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/Chart1"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/Embedded_Tool_Kit/Chart1_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/Embedded_Tool_Kit/Chart1"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
   employee.employee_id, 

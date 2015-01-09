@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
-<!-- 2015-01-07T16:36:35 -->
+<!-- 2015-01-08T22:06:19 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Main_Report" pageWidth="595" pageHeight="720" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="68ae0a93-aab5-44f4-89a4-bf3f53f86982">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
 	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
 	<property name="ireport.jasperserver.user" value="superuser"/>
-	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/MainReport_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/MainReport"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/Embedded_Tool_Kit/MainReport_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/Embedded_Tool_Kit/MainReport"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<style name="AltBackgrd">
 		<conditionalStyle>
@@ -95,7 +95,7 @@ FROM
 				</textElement>
 				<textFieldExpression><![CDATA["Toggle Chart 1"]]></textFieldExpression>
 				<hyperlinkParameter name="resource">
-					<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/Chart1"]]></hyperlinkParameterExpression>
+					<hyperlinkParameterExpression><![CDATA["/public/Samples/Embedded_Tool_Kit/Chart1"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
 				<hyperlinkParameter name="container">
 					<hyperlinkParameterExpression><![CDATA["chart1"]]></hyperlinkParameterExpression>
@@ -117,7 +117,7 @@ FROM
 				</textElement>
 				<textFieldExpression><![CDATA["Toggle Chart 2"]]></textFieldExpression>
 				<hyperlinkParameter name="resource">
-					<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/Chart2"]]></hyperlinkParameterExpression>
+					<hyperlinkParameterExpression><![CDATA["/public/Samples/Embedded_Tool_Kit/Chart2"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
 				<hyperlinkParameter name="container">
 					<hyperlinkParameterExpression><![CDATA["chart1"]]></hyperlinkParameterExpression>
@@ -310,7 +310,7 @@ FROM
 					</textElement>
 					<textFieldExpression><![CDATA["Map It!"]]></textFieldExpression>
 					<hyperlinkParameter name="resource">
-						<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/MapIt"]]></hyperlinkParameterExpression>
+						<hyperlinkParameterExpression><![CDATA["/public/Samples/Embedded_Tool_Kit/MapIt"]]></hyperlinkParameterExpression>
 					</hyperlinkParameter>
 					<hyperlinkParameter name="p_lat">
 						<hyperlinkParameterExpression><![CDATA[$F{lat}]]></hyperlinkParameterExpression>
