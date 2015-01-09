@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
-<!-- 2015-01-05T14:39:55 -->
+<!-- 2015-01-07T11:37:07 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chart2" pageWidth="555" pageHeight="200" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f8de8949-6b13-4704-80fc-f461042de52d">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
@@ -47,6 +47,21 @@ FROM
 						<hc:chartProperty name="_showMeasureNameOnValueAxis">
 							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
 						</hc:chartProperty>
+						<hc:chartProperty name="chart.plotBackgroundColor">
+							<hc:propertyExpression><![CDATA[new java.awt.Color(-4663)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingBottom">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingLeft">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingRight">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingTop">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
 						<hc:chartProperty name="chart.zoomType">
 							<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
 						</hc:chartProperty>
@@ -75,6 +90,9 @@ FROM
 						<hc:chartProperty name="title.text">
 							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
 						</hc:chartProperty>
+						<hc:chartProperty name="chart.backgroundColor">
+							<hc:propertyExpression><![CDATA[new java.awt.Color(-4663)]]></hc:propertyExpression>
+						</hc:chartProperty>
 						<hc:chartProperty name="plotOptions.column.marker.enabled">
 							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
 						</hc:chartProperty>
@@ -90,6 +108,7 @@ FROM
 								</axisLevelBucket>
 							</axisLevel>
 						</dataAxis>
+						<dataAxis axis="Columns"/>
 						<multiAxisMeasure name="Measure1" class="java.lang.Integer" calculation="Nothing">
 							<labelExpression><![CDATA["Month"]]></labelExpression>
 							<valueExpression><![CDATA[$F{store_sales}]]></valueExpression>

@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
-<!-- 2015-01-05T14:53:42 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Main_Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68ae0a93-aab5-44f4-89a4-bf3f53f86982">
+<!-- 2015-01-07T16:36:35 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Main_Report" pageWidth="595" pageHeight="720" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="68ae0a93-aab5-44f4-89a4-bf3f53f86982">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
 	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
 	<property name="ireport.jasperserver.user" value="superuser"/>
 	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/MainReport_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/MainReport"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<style name="AltBackgrd">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}.intValue() % 2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8905A"/>
+		</conditionalStyle>
+	</style>
 	<queryString language="SQL">
-		<![CDATA[SELECT *
-FROM store]]>
+		<![CDATA[SELECT 
+  store."long", 
+  store.lat, 
+  store.florist, 
+  store.store_id, 
+  store.store_type, 
+  store.region_id, 
+  store.store_name, 
+  store.store_number, 
+  store.store_street_address, 
+  store.store_city, 
+  store.store_state, 
+  store.store_postal_code, 
+  store.store_country, 
+  store.store_manager, 
+  store.store_phone, 
+  store.store_fax, 
+  store.first_opened_date, 
+  store.last_remodel_date, 
+  store.store_sqft, 
+  store.grocery_sqft, 
+  store.frozen_sqft, 
+  store.meat_sqft, 
+  store.coffee_bar, 
+  store.video_store, 
+  store.salad_bar, 
+  store.prepared_food
+FROM 
+  public.store;]]>
 	</queryString>
 	<field name="store_id" class="java.lang.Integer"/>
 	<field name="store_type" class="java.lang.String"/>
@@ -35,72 +69,91 @@ FROM store]]>
 	<field name="salad_bar" class="java.lang.Boolean"/>
 	<field name="prepared_food" class="java.lang.Boolean"/>
 	<field name="florist" class="java.lang.Boolean"/>
+	<field name="long" class="java.math.BigDecimal"/>
+	<field name="lat" class="java.math.BigDecimal"/>
 	<background>
-		<band splitType="Stretch"/>
+		<band height="720" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="595" height="720" backcolor="#FFEDC9" uuid="2f74d816-6f3f-4fec-878c-4728afbb51f5"/>
+			</frame>
+		</band>
 	</background>
 	<title>
-		<band height="30" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<textField hyperlinkType="RunReport">
-				<reportElement mode="Opaque" x="30" y="0" width="100" height="30" backcolor="#40A7D6" uuid="9dc69553-d767-4ff6-9407-03692208fd9f"/>
+				<reportElement mode="Opaque" x="65" y="10" width="100" height="30" backcolor="#E8905A" uuid="9dc69553-d767-4ff6-9407-03692208fd9f"/>
 				<box>
-					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isItalic="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Toggle Chart 1"]]></textFieldExpression>
 				<hyperlinkParameter name="resource">
 					<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/Chart1"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
 				<hyperlinkParameter name="container">
-					<hyperlinkParameterExpression><![CDATA["#chart1"]]></hyperlinkParameterExpression>
+					<hyperlinkParameterExpression><![CDATA["chart1"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
-				<hyperlinkParameter name="dialog">
-					<hyperlinkParameterExpression><![CDATA[false]]></hyperlinkParameterExpression>
+				<hyperlinkParameter name="mode">
+					<hyperlinkParameterExpression><![CDATA["div"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
 			</textField>
 			<textField isBlankWhenNull="false" hyperlinkType="RunReport">
-				<reportElement mode="Opaque" x="230" y="0" width="100" height="30" forecolor="#000000" backcolor="#40A7D6" uuid="dd25ac52-93e2-4e89-af9f-33d2e2515c27"/>
+				<reportElement mode="Opaque" x="247" y="10" width="100" height="30" forecolor="#000000" backcolor="#E8905A" uuid="dd25ac52-93e2-4e89-af9f-33d2e2515c27"/>
 				<box>
-					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Toggle Chart 2"]]></textFieldExpression>
 				<hyperlinkParameter name="resource">
 					<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/Chart2"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
 				<hyperlinkParameter name="container">
-					<hyperlinkParameterExpression><![CDATA["#chart1"]]></hyperlinkParameterExpression>
+					<hyperlinkParameterExpression><![CDATA["chart1"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
-				<hyperlinkParameter name="dialog">
-					<hyperlinkParameterExpression><![CDATA[false]]></hyperlinkParameterExpression>
+				<hyperlinkParameter name="mode">
+					<hyperlinkParameterExpression><![CDATA["div"]]></hyperlinkParameterExpression>
 				</hyperlinkParameter>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement mode="Opaque" x="430" y="0" width="100" height="30" forecolor="#000000" backcolor="#40A7D6" uuid="03724c18-0ef4-472c-a32f-4c015a65fe98"/>
+			<textField isBlankWhenNull="false" hyperlinkType="RunReport">
+				<reportElement mode="Opaque" x="430" y="10" width="100" height="30" forecolor="#000000" backcolor="#E8905A" uuid="03724c18-0ef4-472c-a32f-4c015a65fe98"/>
 				<box>
-					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Toggle Chart 3"]]></textFieldExpression>
+				<hyperlinkParameter name="resource">
+					<hyperlinkParameterExpression><![CDATA["/public/Samples/Reports/AllAccounts"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="mode">
+					<hyperlinkParameterExpression><![CDATA["dialog"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="container">
+					<hyperlinkParameterExpression><![CDATA["report"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
 			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="207" splitType="Stretch">
+		<band height="232" splitType="Stretch">
 			<componentElement>
-				<reportElement mode="Opaque" x="-1" y="7" width="555" height="200" backcolor="#696969" uuid="78b21340-5f92-4f07-9604-9097472da546">
+				<reportElement mode="Transparent" x="17" y="7" width="560" height="213" backcolor="#696969" uuid="78b21340-5f92-4f07-9604-9097472da546">
 					<property name="local_mesure_unitwidth" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -113,56 +166,172 @@ FROM store]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="30" splitType="Stretch">
+		<band height="42" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="30" uuid="74cc1390-44d8-4318-99ac-eadffc6616de"/>
-				<text><![CDATA[store_name]]></text>
+				<reportElement mode="Opaque" x="0" y="0" width="119" height="42" backcolor="#E8905A" uuid="74cc1390-44d8-4318-99ac-eadffc6616de"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="0" width="100" height="30" uuid="955953ae-f86b-4b72-a27f-7d2fdeec70e4"/>
-				<text><![CDATA[store_number]]></text>
+				<reportElement mode="Opaque" x="119" y="0" width="119" height="42" backcolor="#E8905A" uuid="955953ae-f86b-4b72-a27f-7d2fdeec70e4"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Number]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="0" width="100" height="30" uuid="e620b4a6-37f2-4d21-8fd7-48ac018d4d29"/>
-				<text><![CDATA[store_country]]></text>
+				<reportElement mode="Opaque" x="238" y="0" width="119" height="42" backcolor="#E8905A" uuid="e620b4a6-37f2-4d21-8fd7-48ac018d4d29"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Country]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="0" width="100" height="30" uuid="7b8d2822-4031-461c-b282-b6c48295ae43"/>
-				<text><![CDATA[store_type]]></text>
+				<reportElement mode="Opaque" x="357" y="0" width="119" height="42" backcolor="#E8905A" uuid="7b8d2822-4031-461c-b282-b6c48295ae43"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="476" y="0" width="119" height="42" backcolor="#E8905A" uuid="811dd112-6008-415c-b118-fa9e79a80ab9"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[View On Map]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="30" splitType="Stretch">
-			<textField hyperlinkType="Dialog">
-				<reportElement x="0" y="0" width="100" height="30" uuid="d92e0dfc-04f2-4434-a29f-946fb7752680"/>
-				<textFieldExpression><![CDATA[$F{store_name}]]></textFieldExpression>
-				<hyperlinkParameter name="title">
-					<hyperlinkParameterExpression><![CDATA["Details for store: "  + $F{store_name}]]></hyperlinkParameterExpression>
-				</hyperlinkParameter>
-				<hyperlinkParameter name="height">
-					<hyperlinkParameterExpression><![CDATA[200]]></hyperlinkParameterExpression>
-				</hyperlinkParameter>
-				<hyperlinkParameter name="width">
-					<hyperlinkParameterExpression><![CDATA[200]]></hyperlinkParameterExpression>
-				</hyperlinkParameter>
-				<hyperlinkParameter name="content">
-					<hyperlinkParameterExpression><![CDATA["<div>Salad Bar: " + $F{salad_bar} + "</div>" +
-"<div>Video Store: " + $F{video_store} + "</div>"]]></hyperlinkParameterExpression>
-				</hyperlinkParameter>
-			</textField>
-			<textField>
-				<reportElement x="100" y="0" width="100" height="30" uuid="71f03c61-0343-402f-8bf5-34326455ac70"/>
-				<textFieldExpression><![CDATA[$F{store_number}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="200" y="0" width="100" height="30" uuid="5fc0d545-6084-4fcc-8130-84a00935fbf5"/>
-				<textFieldExpression><![CDATA[$F{store_country}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="300" y="0" width="100" height="30" uuid="89160b03-24a4-4ddb-8e66-b057ebfacb9a"/>
-				<textFieldExpression><![CDATA[$F{store_type}]]></textFieldExpression>
-			</textField>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+			<frame>
+				<reportElement style="AltBackgrd" x="0" y="0" width="595" height="30" uuid="dd373f4c-a3c0-49c5-b2dd-e5773337e6f2"/>
+				<textField hyperlinkType="Dialog">
+					<reportElement x="0" y="0" width="119" height="30" uuid="d92e0dfc-04f2-4434-a29f-946fb7752680"/>
+					<box leftPadding="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{store_name}]]></textFieldExpression>
+					<hyperlinkParameter name="title">
+						<hyperlinkParameterExpression><![CDATA["Details for store : "  + $F{store_name}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="height">
+						<hyperlinkParameterExpression><![CDATA[200]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="width">
+						<hyperlinkParameterExpression><![CDATA[200]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="content">
+						<hyperlinkParameterExpression><![CDATA["<div>Salad Bar: " + $F{salad_bar} + "</div>" +
+"<div>Video Store: " + $F{video_store} + "</div>" +
+"<div>Lat: " + $F{lat} + "</div>" +
+"<div>Long: " + $F{long} + "</div>"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="mode">
+						<hyperlinkParameterExpression><![CDATA["dialog"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="container">
+						<hyperlinkParameterExpression><![CDATA["store_details"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+				</textField>
+				<textField>
+					<reportElement x="119" y="0" width="120" height="30" uuid="71f03c61-0343-402f-8bf5-34326455ac70"/>
+					<box leftPadding="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{store_number}]]></textFieldExpression>
+				</textField>
+				<textField hyperlinkType="Dialog">
+					<reportElement x="238" y="0" width="119" height="30" uuid="5fc0d545-6084-4fcc-8130-84a00935fbf5"/>
+					<box leftPadding="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{store_country}]]></textFieldExpression>
+					<hyperlinkParameter name="content_type">
+						<hyperlinkParameterExpression><![CDATA["frame"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="container">
+						<hyperlinkParameterExpression><![CDATA[$F{store_country}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="frame_url">
+						<hyperlinkParameterExpression><![CDATA["http://en.wikipedia.org/wiki/" + $F{store_country}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="height">
+						<hyperlinkParameterExpression><![CDATA[700]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="width">
+						<hyperlinkParameterExpression><![CDATA[700]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="title">
+						<hyperlinkParameterExpression><![CDATA["Wiki iFrame Example"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+				</textField>
+				<textField>
+					<reportElement x="357" y="0" width="119" height="30" uuid="89160b03-24a4-4ddb-8e66-b057ebfacb9a"/>
+					<box leftPadding="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{store_type}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false" hyperlinkType="RunReport">
+					<reportElement mode="Transparent" x="476" y="0" width="119" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="939eef8b-fff6-4c88-87ac-cc3589c3b540"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Map It!"]]></textFieldExpression>
+					<hyperlinkParameter name="resource">
+						<hyperlinkParameterExpression><![CDATA["/public/Samples/MyExamples/MapIt"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="p_lat">
+						<hyperlinkParameterExpression><![CDATA[$F{lat}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="p_long">
+						<hyperlinkParameterExpression><![CDATA[$F{long}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="p_store_name">
+						<hyperlinkParameterExpression><![CDATA[$F{store_name}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="title">
+						<hyperlinkParameterExpression><![CDATA["The Store is: " + $F{store_name}]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="mode">
+						<hyperlinkParameterExpression><![CDATA["dialog"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+					<hyperlinkParameter name="container">
+						<hyperlinkParameterExpression><![CDATA["mapit"]]></hyperlinkParameterExpression>
+					</hyperlinkParameter>
+				</textField>
+			</frame>
 		</band>
 	</detail>
 </jasperReport>

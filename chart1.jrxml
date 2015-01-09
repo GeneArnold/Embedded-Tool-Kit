@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
-<!-- 2015-01-05T14:39:51 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chart1" pageWidth="555" pageHeight="200" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e62cbab2-66b3-42c4-a1bf-48792a06e225">
+<!-- 2015-01-07T11:33:39 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chart1" pageWidth="555" pageHeight="213" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e62cbab2-66b3-42c4-a1bf-48792a06e225">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FoodMart"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
 	<property name="ireport.jasperserver.user" value="superuser"/>
 	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/Chart1_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/Chart1"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
   employee.employee_id, 
@@ -34,9 +26,11 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<summary>
-		<band height="199" splitType="Stretch">
+		<band height="213" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement x="0" y="-1" width="555" height="200" uuid="e38cda12-95b2-4b10-8df0-1ad6ebb18550">
+				<reportElement mode="Transparent" x="0" y="-1" width="555" height="213" backcolor="#FFEDC9" uuid="e38cda12-95b2-4b10-8df0-1ad6ebb18550">
 					<property name="local_mesure_unitwidth" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -44,6 +38,33 @@ WHERE
 				</reportElement>
 				<hc:chart xmlns:hc="http://jaspersoft.com/highcharts" xsi:schemaLocation="http://jaspersoft.com/highcharts http://jaspersoft.com/schema/highcharts.xsd" type="Pie">
 					<hc:chartSetting name="default">
+						<hc:chartProperty name="chart.borderColor">
+							<hc:propertyExpression><![CDATA[new java.awt.Color(-16777216)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.borderRadius">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.borderWidth">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.plotBackgroundColor">
+							<hc:propertyExpression><![CDATA[new java.awt.Color(-4663)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.plotBorderWidth">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingBottom">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingLeft">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingRight">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="chart.spacingTop">
+							<hc:propertyExpression><![CDATA[new Integer(0)]]></hc:propertyExpression>
+						</hc:chartProperty>
 						<hc:chartProperty name="chart.zoomType">
 							<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
 						</hc:chartProperty>
@@ -59,6 +80,7 @@ WHERE
 						<hc:chartProperty name="legend.enabled">
 							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
 						</hc:chartProperty>
+						<hc:chartProperty name="plotOptions.pie.showInLegend" value="false"/>
 						<hc:chartProperty name="plotOptions.series.shadow">
 							<hc:propertyExpression><![CDATA[Boolean.FALSE]]></hc:propertyExpression>
 						</hc:chartProperty>
@@ -86,7 +108,6 @@ WHERE
 						<hc:chartProperty name="yAxis.title.text">
 							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
 						</hc:chartProperty>
-						<hc:chartProperty name="plotOptions.pie.showInLegend" value="false"/>
 					</hc:chartSetting>
 					<multiAxisData>
 						<multiAxisDataset/>

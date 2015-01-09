@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2015-01-07T15:59:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mapit" pageWidth="400" pageHeight="400" columnWidth="400" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b2f2e2c4-ebd3-47c9-b1eb-fecaa80cf1fd">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro-6/"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/MyExamples/MapIt_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/MyExamples/MapIt"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="lat" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[37.765206]]></defaultValueExpression>
+	</parameter>
+	<parameter name="long" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[-122.241636]]></defaultValueExpression>
+	</parameter>
+	<parameter name="store_name" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Store Name"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT 1 AS "Dummy"]]>
+	</queryString>
+	<field name="Dummy" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="399" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="400" height="399" uuid="fc1c9f1a-316b-4bcf-ad90-92880e83e383">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<c:map xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:latitudeExpression><![CDATA[$P{lat}]]></c:latitudeExpression>
+					<c:longitudeExpression><![CDATA[$P{long}]]></c:longitudeExpression>
+					<c:zoomExpression><![CDATA[8]]></c:zoomExpression>
+					<c:markerData>
+						<dataset/>
+						<c:item>
+							<c:itemProperty name="id" value="CHANGE_ME_ID"/>
+							<c:itemProperty name="label" value="CHANGE_ME_LABEL">
+								<valueExpression><![CDATA[$P{store_name}]]></valueExpression>
+							</c:itemProperty>
+							<c:itemProperty name="latitude" value="0">
+								<valueExpression><![CDATA[$P{lat}]]></valueExpression>
+							</c:itemProperty>
+							<c:itemProperty name="longitude" value="0">
+								<valueExpression><![CDATA[$P{long}]]></valueExpression>
+							</c:itemProperty>
+						</c:item>
+					</c:markerData>
+				</c:map>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>
