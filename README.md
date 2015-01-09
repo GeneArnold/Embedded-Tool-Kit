@@ -16,4 +16,4 @@ vizjs_toolkit
 
 Along with the reports export the single reports are located in this project if you would like to open those and upload them to JRS on your own. 
 
-You will also notice to files with _Simple in their name. These are very basic versions of this projects concept and will be used for an upcoming video showing the idea behind this toolkit and how others could create their own.
+You will also notice two files with _Simple in their name. These are very basic versions of this project's concept and will be used for an upcoming video showing the idea behind this toolkit and how others could create their own.
