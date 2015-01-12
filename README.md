@@ -12,7 +12,7 @@ To install this toolkit and run the demo please do the following...
 jr.Dialog.js
 jr.RunReport.js
 vizjs_toolkit
-5. Also copy jasperreports-htmlcomponent-5.0.1.jar to webapps->JRS_Install_Location->WEB-INF-lib
+5. Also copy jasperreports-htmlcomponent-5.0.1.jar to webapps->JRS_Install_Location->WEB-INF->lib
 6. After you copy these files you will need to edit the jrsConfig.js file to reference your location of JRS. This file is located in vizjs_toolkit->configuration and the line number is 30.
 
 Along with the reports export the single reports are located in this project if you would like to open those and upload them to JRS on your own. 
